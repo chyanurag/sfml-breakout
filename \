@@ -15,20 +15,13 @@ bool checkCollision(sf::Vector2f ballPos, sf::Vector2f padPos){
 	return false;
 }
 
-enum GameState{
-	Home,
-	Play,
-	Ended
-};
-
 int main(){
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 4;
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game", sf::Style::Fullscreen, settings);
 	sf::RectangleShape paddle(sf::Vector2f(300.f, 50.f));
 	sf::CircleShape ball(20.f);
-	sf::Vector2f ballVelocity(2.f,3.f);
-	enum GameState gameState = Home;
+	sf::Vector2f ballVelocity(0.f,2.f);
 	bool ended = false;
 	paddle.setPosition(sf::Vector2f(810.f, 1030.f));
 	while(window.isOpen()){
@@ -64,13 +57,7 @@ int main(){
 		window.draw(paddle);
 		window.draw(ball);
 		if(checkCollision(ball.getPosition(), paddle.getPosition())){
-			ballVelocity.y > 0 ? ballVelocity.y = -ballVelocity.y : NULL;
-		}
-		if(ball.getPosition().x < 0 || ball.getPosition().x > 1900){
-			ballVelocity.x = -ballVelocity.x;
-		}
-		if(ball.getPosition().y < 0){
-			ballVelocity.y = -ballVelocity.y;
+			ballVelocity.y > 0 ? ballVelocity.y = -ballVelocity.y;
 		}
 		ball.setPosition(ball.getPosition() + ballVelocity);
 		window.display();
