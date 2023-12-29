@@ -29,7 +29,7 @@ int main(){
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game", sf::Style::Fullscreen, settings);
 	sf::RectangleShape paddle(sf::Vector2f(300.f, 50.f));
 	sf::CircleShape ball(20.f);
-	sf::Vector2f ballVelocity(2.f,3.f);
+	sf::Vector2f ballVelocity(5.f,5.f);
 	enum GameState gameState = Home;
 	bool ended = false;
 	paddle.setPosition(sf::Vector2f(810.f, 1030.f));
@@ -101,8 +101,8 @@ int main(){
 								case sf::Keyboard::Scan::Space:
 									gameState = Home;
 									score = 0;
-									window.clear();
-									continue;
+                                    window.clear();
+									break;
 							}
 							break;
 					}
